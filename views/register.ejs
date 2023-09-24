@@ -1,0 +1,55 @@
+<!-- Wappler include head-page="layouts/main" fontawesome_5="cdn" bootstrap5="local" is="dmx-app" id="register" appConnect="local" components="{dmxValidator:{},dmxNotifications:{},dmxBrowser:{}}" -->
+<dmx-serverconnect id="con_getcode" url="/api/registration/regcode"></dmx-serverconnect>
+<div is="dmx-browser" id="browser1"></div>
+<dmx-notifications id="notifies1"></dmx-notifications>
+<meta name="ac:route" content="/register">
+<div class="container mt-5">
+    <form id="register1" method="post" is="dmx-serverconnect-form" action="/api/registration/register" dmx-on:success="register1.reset();browser1.goto('/validate-account',true,'Validate Account')" dmx-on:unauthorized="notifies1.warning('unauthorised')" dmx-on:error="notifies1.danger('Opps! eroor occured')">
+        <input id="text1" name="product_id" class="form-control" type="hidden"><input id="text2" name="product_name" class="form-control" dmx-bind:value="con_getcode.data.regcode" type="hidden">
+
+
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-8 col-xl-6 text-dark bg-secondary bg-opacity-10">
+                <div class="row">
+                    <div class="col text-center">
+                        <h1>Register</h1>
+                        <p class="text-h3">Enter your registration details below.</p>
+                    </div>
+                </div>
+                <div class="row align-items-center mt-5">
+                    <div class="col mt-4">
+                        <input type="text" id="inp_last_name" name="last_name" class="form-control" placeholder="Last Name" required=""><input type="text" id="inp_first_name" name="first_name" class="form-control" placeholder="First Name" required="">
+
+                    </div>
+                </div>
+                <div class="row align-items-center mt-4">
+                    <div class="col">
+                        <input type="email" id="inp_email" name="email" class="form-control" placeholder="Email" required="" data-rule-email="">
+                    </div>
+                </div>
+                <div class="row align-items-center mt-4">
+                    <div class="col">
+                        <input type="password" id="inp_password" name="password" class="form-control" placeholder="Password" required="" minlength="8" data-rule-nowhitespace="">
+                    </div>
+                    <div class="col">
+                        <input type="password" id="inp_password2" name="password2" class="form-control" placeholder="Confirm Password" data-rule-equalto="password">
+                    </div>
+                </div>
+                <div class="row justify-content-start mt-5">
+                    <div class="col">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" required="">
+                                I Read and Accept <a href="/termsandconditions" target="_blank">Terms and Conditions</a>
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col"><button id="register1_submit" class="btn mt-4 btn-primary" type="submit">Register</button></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

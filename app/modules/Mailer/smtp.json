@@ -1,0 +1,12 @@
+{
+  "name": "smtp",
+  "module": "mail",
+  "action": "setup",
+  "options": {
+    "host": "mail.btinternet.com",
+    "useSSL": true,
+    "port": 465,
+    "username": "malcolmrose@btinternet.com",
+    "password": "1UtwAbsm#96#11"
+  }
+}

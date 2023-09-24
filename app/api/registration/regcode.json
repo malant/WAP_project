@@ -1,0 +1,34 @@
+{
+  "meta": {
+    "$_SESSION": [
+      {
+        "type": "text",
+        "name": "codegen"
+      }
+    ]
+  },
+  "exec": {
+    "steps": [
+      {
+        "name": "regcode",
+        "module": "core",
+        "action": "setsession",
+        "options": {
+          "value": "{{UUID}}"
+        },
+        "output": true
+      },
+      {
+        "name": "codegen",
+        "module": "core",
+        "action": "setvalue",
+        "options": {
+          "value": "{{$_SESSION.codegen}}"
+        },
+        "meta": [],
+        "outputType": "text",
+        "output": true
+      }
+    ]
+  }
+}

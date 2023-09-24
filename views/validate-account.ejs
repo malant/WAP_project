@@ -1,0 +1,42 @@
+<!-- Wappler include head-page="layouts/main" fontawesome_5="cdn" is="dmx-app" id="validateaccount" appConnect="local" components="{dmxValidator:{},dmxNotifications:{},dmxBrowser:{}}" jquery_slim_35="cdn" bootstrap5="local" -->
+<dmx-notifications id="notifies1">
+
+</dmx-notifications>
+<div is="dmx-browser" id="browser1"></div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Validate Your Account</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p>You must now validate your account by entering the code sent to your registered email address. Unconfirmed accounts will be removed after 24 hours.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col bg-opacity-10 bg-secondary">
+            <form id="form1" is="dmx-serverconnect-form" action="/api/validate_code" dmx-on:unauthorized="notifies1.warning('Unauthrised!')" dmx-on:error="notifies1.danger('Error ')" dmx-on:success="browser1.goto('/',true)" method="post">
+                <div class="form-group mb-3 row">
+                    <label for="inpauthcode" class="col-sm-2 col-form-label">Validation Code</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inpauthcode" name="authcode" aria-describedby="input1_help" placeholder="Enter validation code" required="">
+                    </div>
+                </div>
+                <div class="form-group mb-3 row">
+                    <label for="inpemail" class="col-sm-2 col-form-label">Registered Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inpemail" name="email" aria-describedby="input1_help" placeholder="Enter registered email address" required="" data-rule-email="">
+                    </div>
+                </div>
+                <div class="form-group mb-3 row">
+                    <div class="col-sm-2">&nbsp;</div>
+                    <div class="col-sm-10">
+                        <button id="btn1_submit" type="submit" class="btn btn-primary">Validate</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<meta name="ac:route" content="/validate-account">
